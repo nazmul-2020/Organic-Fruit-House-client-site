@@ -8,7 +8,7 @@ import img6 from "../../assets/6.jpg";
 const Gallery = () => {
   return (
     <div>
-      <section className="text-gray-600 body-font mt-10">
+      <section className="text-gray-600 body-font mt-5">
         <h2 className="text-center text-5xl text-primary opacity-65 font-bold">
           Available in our Stock
         </h2>

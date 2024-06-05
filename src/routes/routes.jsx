@@ -5,32 +5,44 @@ import Home from "../pages/Home";
 import AllFruits from "../pages/AllFruits";
 import DashBoard from "../pages/DashBoard";
 import ErrorPage from "../pages/ErrorPage";
+import Login from "../pages/Login";
+import SignUP from "../pages/SignUP";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout/>,
-        errorElement: <ErrorPage />,
-        children: [
-          {
-            path: "/",
-            element: <Home/>,
-          },
-          {
-            path: "/allFruits",
-            element: <AllFruits/>,
-          },
-        ],
-    },
-    {
-      path: "",
-      element: <DashBoardLayout/>,
-        errorElement: <ErrorPage />,
-        children: [
-          {
-            path: "dashBoard",
-            element: <DashBoard/>,
-          }
-        ],
-    },
-  ]);
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        loader: () =>
+          fetch("https://organic-fruit-house-server-site.vercel.app/fruits"),
+      },
+      {
+        path: "/allFruits",
+        element: <AllFruits />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/singUP",
+        element: <SignUP />,
+      },
+    ],
+  },
+  {
+    path: "",
+    element: <DashBoardLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "dashBoard",
+        element: <DashBoard />,
+      },
+    ],
+  },
+]);
