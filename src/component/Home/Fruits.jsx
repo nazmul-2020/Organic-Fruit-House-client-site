@@ -1,4 +1,3 @@
-// import img1 from "../../assets/1.jpeg";
 import SingleFruit from "./SingleFruit";
 
 // eslint-disable-next-line react/prop-types
@@ -7,7 +6,7 @@ const Fruits = ({ data }) => {
   return (
     <>
       <h2 className="text-center text-5xl text-info font-bold">
-        All Organic Fruit
+        Our Organic Fruit
       </h2>
       <div className="h-1 bg-info w-1/5 mx-auto opacity-30 mt-4"></div>
       <section className="text-gray-600 body-font">

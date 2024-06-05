@@ -23,6 +23,8 @@ export const router = createBrowserRouter([
       {
         path: "/allFruits",
         element: <AllFruits />,
+        loader: () =>
+          fetch("https://organic-fruit-house-server-site.vercel.app/fruits"),
       },
       {
         path: "/login",
