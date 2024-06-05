@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const SingleFruit = ({ fruit }) => {
-  const { _id, img, name, quantity, price } = fruit;
+  // eslint-disable-next-line react/prop-types
+  const { img, name, quantity, price } = fruit;
   return (
     <>
       <div className="p-4 md:w-1/3">
