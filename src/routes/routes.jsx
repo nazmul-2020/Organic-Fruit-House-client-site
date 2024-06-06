@@ -7,6 +7,7 @@ import DashBoard from "../pages/DashBoard";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
+import FruitDetails from "../component/Home/FruitDetails";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,12 @@ export const router = createBrowserRouter([
         element: <AllFruits />,
         loader: () =>
           fetch("https://organic-fruit-house-server-site.vercel.app/fruits"),
+      },
+      {
+        path: "/fruits/:id",
+        element: <FruitDetails />,
+        loader: ({params}) =>
+          fetch(`https://organic-fruit-house-server-site.vercel.app/fruits/${params.id}`),
       },
       {
         path: "/login",
