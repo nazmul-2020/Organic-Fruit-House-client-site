@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const FruitDetails = () => {
   const fruit = useLoaderData();
-  const { img, name, quantity, price, details } = fruit;
+  const { img, name, details } = fruit;
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -20,8 +20,6 @@ const FruitDetails = () => {
             </h1>
             <p className="mb-8 leading-relaxed">{details}</p>
             <div className="flex w-full md:justify-start justify-center items-end">
-
-              {/* Open the modal using document.getElementById('ID').showModal() method */}
               <button
                 className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                 onClick={() =>
@@ -32,7 +30,6 @@ const FruitDetails = () => {
               </button>
               <dialog id="my_modal_2" className="modal ">
                 <div className="modal-box bg-cyan-300">
-                  {/* <h3 className="font-bold text-lg">Hello!</h3> */}
                   <p className="py-4 font-bold text-lg text-center ">Coming soon ......!! </p>
                 </div>
                 <form method="dialog" className="modal-backdrop">
@@ -40,9 +37,6 @@ const FruitDetails = () => {
                 </form>
               </dialog>
             </div>
-            {/* <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
-              Neutra shabby chic ramps, viral fixie.
-            </p> */}
           </div>
         </div>
       </section>

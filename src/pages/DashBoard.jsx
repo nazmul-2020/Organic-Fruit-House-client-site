@@ -3,7 +3,7 @@
 const DashBoard = () => {
     return (
         <div>
-            <h1>this DashBoard</h1>
+            <h1>this DashBoffffard</h1>
         </div>
     );
 };

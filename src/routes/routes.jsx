@@ -8,6 +8,9 @@ import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
 import FruitDetails from "../component/Home/FruitDetails";
+import ManageFruits from "../component/DashBord/ManageFruits";
+import AddFruit from "../component/DashBord/AddFruit";
+import EditFruit from "../component/DashBord/EditFruit";
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/fruits/:id",
         element: <FruitDetails />,
-        loader: ({params}) =>
-          fetch(`https://organic-fruit-house-server-site.vercel.app/fruits/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://organic-fruit-house-server-site.vercel.app/fruits/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -49,8 +54,24 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "dashBoard",
+        path: "/dashboard",
         element: <DashBoard />,
+      },
+      {
+        path: "dashboard/manageFruits",
+        element: <ManageFruits />,
+      },
+      {
+        path: "dashboard/addFruit",
+        element: <AddFruit />,
+      },
+      {
+        path: "dashboard/editFruit/:id",
+        element: <EditFruit />,
+        loader: ({ params }) =>
+          fetch(
+            `https://organic-fruit-house-server-site.vercel.app/fruits/${params.id}`
+          ),
       },
     ],
   },
