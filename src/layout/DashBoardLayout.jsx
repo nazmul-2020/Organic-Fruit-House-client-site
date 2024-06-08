@@ -1,6 +1,12 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const DashBoardLayout = () => {
+  const { logout} = useAuth();
+  
+  const handleLogout = async () => {
+    await logout();
+  };
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -29,15 +35,15 @@ const DashBoardLayout = () => {
               <li>
                 <Link to={"/dashboard/addFruit"}>Add Fruit</Link>
               </li>
-              <li>
-                <Link to={"/dashboard/editFruit"}>Add Fruit</Link>
-              </li>
+              {/* <li>
+                <Link to={"/dashboard/profile"}>Profile </Link>
+              </li> */}
             </div>
             <div className="flex gap-4">
               <NavLink to={"/"} className="btn btn-neutral">
                 Home
               </NavLink>
-              <button className="btn btn-error">Logout</button>
+              <button onClick={handleLogout} className="btn btn-error">Logout</button>
             </div>
           </ul>
         </div>

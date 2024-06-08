@@ -11,6 +11,9 @@ import FruitDetails from "../component/Home/FruitDetails";
 import ManageFruits from "../component/DashBord/ManageFruits";
 import AddFruit from "../component/DashBord/AddFruit";
 import EditFruit from "../component/DashBord/EditFruit";
+import Profile from "../component/DashBord/Profile";
+import EditProfile from "../component/DashBord/EditProfile";
+import PrivateRoute from "./pivate/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +46,7 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/singUP",
+        path: "/signUp",
         element: <SignUP />,
       },
     ],
@@ -55,23 +58,57 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <DashBoard />,
+        element: (
+          <PrivateRoute>
+            <DashBoard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "dashboard/manageFruits",
-        element: <ManageFruits />,
+        element: (
+          <PrivateRoute>
+            <ManageFruits />
+          </PrivateRoute>
+        ),
       },
       {
         path: "dashboard/addFruit",
-        element: <AddFruit />,
+        element: (
+          <PrivateRoute>
+            <AddFruit />
+          </PrivateRoute>
+        ),
       },
       {
         path: "dashboard/editFruit/:id",
-        element: <EditFruit />,
+        element: (
+          <PrivateRoute>
+            <EditFruit />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://organic-fruit-house-server-site.vercel.app/fruits/${params.id}`
           ),
+      },
+      {
+        path: "dashboard/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "dashboard/editProfile/:id",
+        element: (
+          <PrivateRoute>
+            <EditProfile />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://organic-fruit-house-server-site.vercel.app/user/get/${params.id}`),
       },
     ],
   },

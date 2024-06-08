@@ -1,6 +1,8 @@
 import toast from "react-hot-toast";
 
 const AddFruit = () => {
+  const token = localStorage.getItem("token");
+
   const handleCreateFruit = async (e) => {
     e.preventDefault();
 
@@ -18,13 +20,14 @@ const AddFruit = () => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        toast.success('Successful Add fruit')
+        toast.success("Successful Add fruit");
         form.reset();
       });
   };

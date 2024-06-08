@@ -1,6 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+// import demo from "../../assets/download.jpeg";
 
 const Navbar = () => {
+  const { logout, user } = useAuth();
+  
+  const handleLogout = async () => {
+    await logout();
+  };
   const menuItems = (
     <>
       <li>
@@ -10,7 +17,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/allFruits" className="text">
-        AllFruits
+          AllFruits
         </NavLink>
       </li>
       <li>
@@ -23,28 +30,34 @@ const Navbar = () => {
           Dashboard
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/login" className="text">
-          Login
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/login" className="text">
-          Sign Out
-        </NavLink>
-      </li>
-      <div
-        tabIndex={0}
-        role="button"
-        className="btn btn-ghost btn-circle border border-info avatar"
-      >
-        <div className="w-10 border border-info rounded-full">
-          <img
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-          />
+      {!user && (
+        <li>
+          <NavLink to="/login" className="text">
+            Login
+          </NavLink>
+        </li>
+      )}
+
+      {user && (
+        <li className="text">
+          <button onClick={handleLogout}>Sign Out</button>
+        </li>
+      )}
+
+      {user && (
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn btn-ghost btn-circle border border-info avatar"
+        >
+          <div className="w-10 border border-info rounded-full">
+            <img
+              alt="Tailwind CSS Navbar component"
+              src={user?.photoURL}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 

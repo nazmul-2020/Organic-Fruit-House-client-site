@@ -14,11 +14,7 @@ const Gallery = () => {
         </h2>
         <div className="h-1 bg-primary w-1/5 mx-auto opacity-30 mt-2"></div>
         <div className="container px-5 py-10 mx-auto flex flex-wrap">
-          {/* <div className="flex w-full mb-20 flex-wrap">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 lg:w- mx-auto lg:mb-0 mb-4">
-              Master Cleanse Reliac Heirloom
-            </h1>
-          </div> */}
+         
           <div className="flex flex-wrap md:-m-2 -m-1">
             <div className="flex flex-wrap w-1/2">
               <div className="md:p-2 p-1 w-1/2">

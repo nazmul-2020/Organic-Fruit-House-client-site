@@ -4,6 +4,7 @@ import FruitRow from "./FruitRow";
 const ManageFruits = () => {
   const [fruits, setFruits] = useState([]);
 
+
   useEffect(() => {
     fetch("https://organic-fruit-house-server-site.vercel.app/fruits")
       .then((res) => res.json())

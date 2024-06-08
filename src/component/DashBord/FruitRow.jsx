@@ -3,17 +3,26 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const FruitRow = ({ fruit, onDelete }) => {
+  const token = localStorage.getItem("token");
+
   // eslint-disable-next-line react/prop-types
   const { _id, name, price, quantity, img } = fruit;
 
   const handleDelete = async () => {
-    await fetch(`https://organic-fruit-house-server-site.vercel.app/fruits/${_id}`, {
-      method: "DELETE",
-    })
+    await fetch(
+      `https://organic-fruit-house-server-site.vercel.app/fruits/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        toast.delete("Successful Delete")
+        toast.delete("Successful Delete");
         onDelete(_id);
       });
   };
